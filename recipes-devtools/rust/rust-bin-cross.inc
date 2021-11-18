@@ -3,8 +3,7 @@ HOMEPAGE = "https://rust-lang.org"
 LICENSE = "Apache-2.0 | MIT"
 SECTION = "devel"
 
-inherit cross
-inherit rust-common
+inherit cross rust-common 
 
 # Required to link binaries
 DEPENDS += "gcc-cross-${TARGET_ARCH}"
@@ -16,8 +15,8 @@ PN = "rust-bin-cross-${TARGET_ARCH}"
 # will be installed automatically.
 EXTRA_RUST_TARGETS ?= ""
 
-RUST_BUILD_TARGET = "${@rust_target(d, 'BUILD')}"
-RUST_TARGET_TARGET = "${@rust_target(d, 'TARGET')}"
+RUST_BUILD_TARGET = "${rust_target(d, 'BUILD')}"
+RUST_TARGET_TARGET = "${rust_target(d, 'TARGET')}"
 RUST_ALL_TARGETS = "${RUST_BUILD_TARGET} ${RUST_TARGET_TARGET} ${EXTRA_RUST_TARGETS}"
 
 S = "${WORKDIR}/rustc-${PV}-${RUST_BUILD_TARGET}"

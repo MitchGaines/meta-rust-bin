@@ -3,12 +3,11 @@ HOMEPAGE = "https://rust-lang.org"
 LICENSE = "Apache-2.0 | MIT"
 SECTION = "devel"
 
-inherit cross
-inherit rust-common
+inherit cross rust-common
 
 PN = "cargo-bin-cross-${TARGET_ARCH}"
 
-CARGO_HOST_TARGET = "${@rust_target(d, 'HOST')}"
+CARGO_HOST_TARGET = "${rust_target(d, 'HOST')}"
 
 SYSROOT_DIRS_NATIVE += "${prefix}"
 SYSROOT_DIRS_BLACKLIST += "\
